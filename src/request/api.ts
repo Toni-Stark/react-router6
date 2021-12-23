@@ -2,14 +2,15 @@ export const appConfig = {
   VERSION: "v1.1.0",
 
   server: {
-    // 192.168.0.105
     dev: {
       API_PROTOCOL: "http://",
-      API_HOST: "10.1.1.111",
+      // API_HOST: "10.1.1.111",
+      API_HOST: "localhost:5050",
       HOST_PORT: "/api",
     },
     prod: {
       API_PROTOCOL: "http://",
+      // API_HOST: "app.icst-edu.com",
       API_HOST: "app.icst-edu.com",
       HOST_PORT: "50188/api/v2",
     },

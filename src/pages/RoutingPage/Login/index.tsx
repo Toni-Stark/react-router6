@@ -1,7 +1,20 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "antd";
 
-export const Login: React.FC = () => {
-  const [screen, setScreen] = useState(0);
+export function Login(): React.ReactElement {
+  const navigator = useNavigate();
 
-  return <div></div>;
-};
+  return (
+    <div>
+      <Button
+        type="primary"
+        onClick={() => {
+          navigator("invoices");
+        }}
+      >
+        登录
+      </Button>
+    </div>
+  );
+}
