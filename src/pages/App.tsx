@@ -5,14 +5,14 @@ import { router } from "./router";
 export const App = () => {
   // useRouter() --- Hooks实现
   const getRoute = (router: any) => {
-    const instantiation = (route) => {
+    const instantiation = (route: any) => {
       if (route.name === "index") {
         return <Route key={route.key} index element={route.element} />;
       } else {
         return (
           <Route key={route.key} path={route.name} element={route.element}>
             {route?.children &&
-              route.children.map((item, key) => {
+              route.children.map((item: any, key: any) => {
                 return instantiation({ ...item, key });
               })}
           </Route>
@@ -21,7 +21,7 @@ export const App = () => {
     };
     return (
       <Routes>
-        {router?.map((item, key) => {
+        {router?.map((item: any, key: any) => {
           return instantiation({ ...item, key });
         })}
       </Routes>

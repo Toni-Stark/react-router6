@@ -12,9 +12,9 @@ export const Content: React.FC = () => {
     localStorage.setItem("token", "1da16c481dc54b9c8030dc99ce3bd592");
     // localStorage.removeItem("token");
   }, []);
-  const searchFun = async (e) => {
+  const searchFun = async (e?: string) => {
     setLoading(true);
-    let res = await Api.getInstance.post({
+    await Api.getInstance.post({
       url: "/patient/list",
       params: {
         searchName: e,

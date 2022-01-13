@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import moment from "moment";
 import { SERVER_URL } from "./api";
+import { message } from "antd";
 
 const qs = require("qs");
 
@@ -8,9 +9,9 @@ const baseURL = SERVER_URL;
 
 // class ---------------------------------------------------
 export interface ApiResultInterface {
-  code?: number;
-  message: string;
-  result: any;
+  errno?: number;
+  error: string;
+  data: any;
   success: boolean;
   timestamp: string;
 }
@@ -32,10 +33,10 @@ export class Api {
   }
 
   static instance: Api;
-  public token = localStorage.getItem("token");
-
+  // public token = "Bearer HFCo6DbJlFUlClwJeVGfon3qSNREEMV3";
+  public token = localStorage.getItem("h_search");
   readonly _api: AxiosInstance;
-  readonly timeout: number = 10000;
+  readonly timeout: number = 300000;
 
   constructor() {
     this._api = axios.create({
@@ -47,32 +48,50 @@ export class Api {
       config.data = qs.stringify(config.data);
       return config;
     });
-    this._api.interceptors.response.use(async (response) => {
-      if (response.data.errno === 999900) {
-        const messageToUser = "登录失效";
-        if (this.token) {
-          await localStorage.removeItem("token");
-          await Api.redirectToLoginScreen();
-        } else {
-          return {
-            code: response.data.errno,
-            message: messageToUser,
-            result: response.data.result,
-            success: false,
-            timestamp: Api.getTimeStamp(),
-          };
+    this._api.interceptors.response.use(
+      async (response: any) => {
+        if (response.data.errno === 999900) {
+          if (this.token) {
+            await localStorage.removeItem("h_search");
+            await Api.redirectToLoginScreen(response.data);
+          }
         }
+        if (
+          response.status >= 200 &&
+          response.status <= 300 &&
+          response.data.error !== 999900
+        ) {
+          return response.data;
+        } else if (response.status >= 400) {
+          let data = response.data;
+          if (data) {
+            message.error(data?.error);
+          }
+          return data;
+        }
+      },
+      (error) => {
+        return {
+          errno: 0,
+          error: error,
+          data: null,
+          success: false,
+          timestamp: Api.getTimeStamp(),
+        };
       }
-      return response;
-    });
+    );
   }
 
   private static getTimeStamp(): string {
     return moment().format("x");
   }
 
-  static async redirectToLoginScreen() {
-    console.log("未登录或者登录失效");
+  static async redirectToLoginScreen(data?: any) {
+    message.destroy();
+    message.error(`${data.error}，即将跳转回首页`);
+    setTimeout(() => {
+      window.location.href = data?.url || "https://ckd.sersmed.cn/login";
+    }, 5000);
   }
 
   private async RestfulOperate(
@@ -83,28 +102,16 @@ export class Api {
     multipart: boolean
   ): Promise<ApiResult> {
     let response: any;
-    const headers = {
+    const headers: any = {
       Authorization: "",
       "Content-Type": "application/x-www-form-urlencoded",
     };
     if (withToken) {
-      if (this.token === null) {
-        await Api.redirectToLoginScreen();
-        return {
-          code: 401,
-          message: "登录失效",
-          result: null,
-          success: false,
-          timestamp: Api.getTimeStamp(),
-        };
-      } else {
-        headers["Authorization"] = this.token;
-      }
+      headers["Authorization"] = this.token;
     }
     if (multipart) {
       headers["Content-Type"] = "multipart/form-data";
     }
-
     switch (operate) {
       case "get":
         response = await this._api.get(url, { params, headers });
@@ -123,80 +130,36 @@ export class Api {
         break;
       default:
         return {
-          code: 500,
-          message: "消息格式错误",
-          result: null,
+          errno: 500,
+          error: "请求格式错误",
+          data: null,
           success: false,
           timestamp: Api.getTimeStamp(),
         };
     }
-
-    switch (response.data.errno) {
+    switch (response.errno) {
       case 0:
         return {
-          code: response.data.errno,
-          message: response.data.error,
-          result: response.data.data,
-          success: true,
+          errno: response.errno,
+          error: response.error,
+          data: response.data,
+          success:
+            typeof response.success === "boolean" ? response.success : true,
           timestamp: Api.getTimeStamp(),
         };
-      // case CLIENT_ERROR:
-      // case SERVER_ERROR:
-      //   if (response.data?.message !== undefined) {
-      //     return {
-      //       code: response.data.status,
-      //       message: response.data.message,
-      //       result: response.data.result,
-      //       success: false,
-      //       timestamp: Api.getTimeStamp(),
-      //     };
-      //   } else if (response.status === 404) {
-      //     return {
-      //       code: response.status,
-      //       message: "服务器地址错误",
-      //       result: null,
-      //       success: false,
-      //       timestamp: Api.getTimeStamp(),
-      //     };
-      //   } else {
-      //     return {
-      //       code: response.status,
-      //       message: "访问服务器资源发生错误",
-      //       result: null,
-      //       success: false,
-      //       timestamp: Api.getTimeStamp(),
-      //     };
-      //   }
-      // case TIMEOUT_ERROR:
-      //   return {
-      //     code: response.status,
-      //     message: "访问服务器超时",
-      //     result: null,
-      //     success: false,
-      //     timestamp: Api.getTimeStamp(),
-      //   };
-      // case CONNECTION_ERROR:
-      //   return {
-      //     code: response.status,
-      //     message: "无法访问服务器",
-      //     result: null,
-      //     success: false,
-      //     timestamp: Api.getTimeStamp(),
-      //   };
-      // case NETWORK_ERROR:
-      //   return {
-      //     code: response.status,
-      //     message: "无法访问服务器",
-      //     result: null,
-      //     success: false,
-      //     timestamp: Api.getTimeStamp(),
-      //   };
-      // case CANCEL_ERROR:
+      case 999900:
+        return Promise.reject({
+          errno: response.errno,
+          error: response.error,
+          data: null,
+          success: false,
+          timestamp: Api.getTimeStamp(),
+        });
       default:
         return {
-          code: response.data.errno,
-          message: "发生未知错误",
-          result: null,
+          errno: response.errno,
+          error: response.error,
+          data: null,
           success: false,
           timestamp: Api.getTimeStamp(),
         };

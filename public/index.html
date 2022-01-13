@@ -24,9 +24,41 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <style>
+      .body {
+        overflow: hidden;
+        -ms-overflow-y: hidden;
+      }
+    </style>
+    <script>
+      Object.entries = Object.entries || function (obj) {
+        var ownProps = Object.keys(obj),
+                i = ownProps.length,
+                resArray = new Array(i); // preallocate the Array
+        while (i--)
+          resArray[i] = [ownProps[i], obj[ownProps[i]]];
+        return resArray;
+      };
+
+      if (!String.prototype.padEnd) {
+        String.prototype.padEnd = function padEnd(targetLength, padString) {
+          targetLength = targetLength >> 0; //floor if number or convert non-number to 0;
+          padString = String((typeof padString !== 'undefined' ? padString : ''));
+          if (this.length > targetLength) {
+            return String(this);
+          }
+          else {
+            targetLength = targetLength - this.length;
+            if (targetLength > padString.length) {
+              padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
+            }
+            return String(this) + padString.slice(0, targetLength);
+          }
+        };
+      }
+    </script>
   </head>
-  <body>
+  <body class="body">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
