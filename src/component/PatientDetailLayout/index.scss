@@ -1,0 +1,9 @@
+.patient-layout-content {
+  width: 100%;
+  padding-left: 10px;
+  > .content-banner {
+    padding: 8px 20px 0 20px;
+    border: 1px solid rgba(242, 242, 242, 1);
+    justify-content: space-between;
+  }
+}

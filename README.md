@@ -1,47 +1,70 @@
-此项目是一个最佳实践
+# Getting Started with Create React App
 
-启动项目之前使用yarn或者npm下载package.json对应的依赖
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-------------------------------
-package.json                 |
-------------------------------
-@babel/core  由社区志愿者维护的工具 可以帮助我们使用最新的Javascript编写代码
+## Available Scripts
 
-@pmmmwh/react-refresh-webpack-plugin  用于react组件的"热重载";
----Prerequisites---
-react               16.9.0 | 17.x
-react-dom           16.9.0 | 17.x
-react-refresh       0.10.0+
-webpack             16.13.0 | 17.x
----Minimum requirements---
-react               16.13.0
-react-dom           16.13.0
-react-refresh       0.10.0
-webpack             4.43.0
+In the project directory, you can run:
 
-@svgr/webpack  可以将方便的将svg转成组件 https://react-svgr.com
+### `yarn start`
 
-autoprefixer  用于解析 CSS 并使用 "Can I Use" 中的值向 CSS 规则添加供应商前缀
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-axios  项目使用axios封装请求以实现模块化
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-bfj  BFJ 实现异步函数并使用预先分配的固定长度数组来尝试缓解解析巨大的 JSON 字符串或字符串化巨大的 JavaScript 数据集垄断事件循环并可能导致内存不足异常
+### `yarn test`
 
-camelcase  编写代码时可以用ctrl+shift+u实现大小写快捷切换
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-case-sensitive-paths-webpack-plugin  区分大小写路径
+### `yarn build`
 
-dotenv  它将环境变量从.env文件加载到process.env
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-file-loader  将文件上的/file-loader解析为 url 并将文件发送到输出目录中
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-fs-extra  将所有fs中的方法都添加到fs-extra中
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-项目配置了prettier以方便格式化代码，prettier
+### `yarn eject`
 
-"homepage": "." 项目静态资源打包后的根路径
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-------------------------------
-.env                         |
-------------------------------
-FAST_REFRESH=true  react为web提出的模块热替换的方案
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

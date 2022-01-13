@@ -1,0 +1,25 @@
+.medicalHistory {
+  padding: 20px;
+  > button {
+    border: none;
+    height: 40px;
+    width: 110px;
+    line-height: 40px;
+  }
+  > button:hover {
+    color: #1abc9c;
+  }
+  .titles {
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    > div {
+      width: 3px;
+      background-color: #1abc9c;
+      margin-right: 20px;
+    }
+  }
+  .rdos {
+    margin: 5px 0 22px 22px;
+  }
+}

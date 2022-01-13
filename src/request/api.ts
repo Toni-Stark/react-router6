@@ -3,10 +3,10 @@ export const appConfig = {
 
   server: {
     dev: {
-      // API_PROTOCOL: "https://",
-      API_PROTOCOL: "http://",
-      // API_HOST: "ckd-hx.sersmed.cn/api",
-      API_HOST: "192.168.12.83:8002/api",
+      API_PROTOCOL: "https://",
+      // API_PROTOCOL: "http://",
+      API_HOST: "ckd-hx.sersmed.cn/api",
+      // API_HOST: "192.168.12.83:8002/api",
     },
     prod: {
       API_PROTOCOL: "",

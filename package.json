@@ -1,11 +1,14 @@
 {
-  "name": "creater-alex",
+  "name": "ckd-version-1.0.1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
@@ -63,7 +66,6 @@
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^17.0.2",
-    "react-hot-loader": "^4.13.0",
     "react-refresh": "^0.8.3",
     "react-router": "^6.1.1",
     "react-router-dom": "6",
@@ -155,7 +157,7 @@
       "react-app"
     ]
   },
-  "homepage": ".",
+  "homepage": "/research",
   "eslintConfig": {
     "extends": "react-app"
   }

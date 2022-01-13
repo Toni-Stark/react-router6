@@ -33,7 +33,7 @@ export class Api {
   }
 
   static instance: Api;
-  // public token = "Bearer HFCo6DbJlFUlClwJeVGfon3qSNREEMV3";
+  // public token = "Bearer DfoJgzS0gpAXPPkSUvJ9zlG8QMUNx3cF";
   public token = localStorage.getItem("h_search");
   readonly _api: AxiosInstance;
   readonly timeout: number = 300000;
