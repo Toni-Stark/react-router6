@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import { Progress } from "antd";
-import { FormItem } from "../../request/types";
 
 const getGender = (type?: string | number) => {
   switch (type) {
@@ -104,28 +103,4 @@ export const tableColumns: any = [
     dataIndex: "expired_visit",
     render: (text: any) => text?.toString() || "/",
   },
-  // {
-  //   title: "质询",
-  //   dataIndex: "challenge_count",
-  //   render: (text: any) => text?.toString() || "/",
-  // },
 ];
-// 性别选择配置
-export const genderConfig: ConfigType<Partial<FormItem>> = {
-  placeholder: "性别",
-  elements: [
-    { name: "全部", value: "0" },
-    { name: "男", value: "1" },
-    { name: "女", value: "2" },
-  ],
-};
-// 诊断类型配置
-export const diagnosticConfig: ConfigType<FormItem> = {
-  placeholder: "诊断类型",
-  elements: [],
-};
-
-export type ConfigType<T> = {
-  placeholder: string;
-  elements?: Array<T>;
-};

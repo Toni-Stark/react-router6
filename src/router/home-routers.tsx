@@ -1,9 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Home } from "../pages/Home";
-import { NotFound } from "../pages/NotFound";
 
-export const router = [
+export const homeRouters = [
   {
     name: "/home",
     element: <Outlet />,
@@ -21,9 +20,5 @@ export const router = [
         ),
       },
     ],
-  },
-  {
-    name: "*",
-    element: <NotFound />,
   },
 ];

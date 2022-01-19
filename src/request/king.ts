@@ -1,12 +1,5 @@
 import { Api } from "./config";
-import {
-  GetPatientListType,
-  ImportPatientType,
-  ExampleType,
-  VisitType,
-  FormType,
-  PopulationType,
-} from "./types";
+import { ExampleType } from "./types";
 
 class KingApi {
   static async Example(params: ExampleType) {

@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
-import "./index.scss";
 interface Props {}
 
-export const Home = (props: Partial<Props>): React.ReactElement => {
+export const Store = (props: Partial<Props>): React.ReactElement => {
   const navigator = useNavigate();
 
   return (
     <div className="home-body">
-      <h1>Home</h1>
+      <h1>Store</h1>
       <Button
         onClick={() => {
-          navigator("/store");
+          navigator("/home");
         }}
         type="link"
       >
