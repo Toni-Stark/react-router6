@@ -71,13 +71,13 @@ export class Api {
         }
       },
       (error) => {
-        return {
+        return Promise.reject({
           errno: 0,
           error: error,
           data: null,
           success: false,
           timestamp: Api.getTimeStamp(),
-        };
+        });
       }
     );
   }
@@ -129,24 +129,24 @@ export class Api {
         response = await this._api.delete(url, { params, headers });
         break;
       default:
-        return {
+        return Promise.reject({
           errno: 500,
           error: "请求格式错误",
           data: null,
           success: false,
           timestamp: Api.getTimeStamp(),
-        };
+        });
     }
     switch (response.errno) {
       case 0:
-        return {
+        return Promise.resolve({
           errno: response.errno,
           error: response.error,
           data: response.data,
           success:
             typeof response.success === "boolean" ? response.success : true,
           timestamp: Api.getTimeStamp(),
-        };
+        });
       case 999900:
         return Promise.reject({
           errno: response.errno,
@@ -156,13 +156,13 @@ export class Api {
           timestamp: Api.getTimeStamp(),
         });
       default:
-        return {
+        return Promise.resolve({
           errno: response.errno,
           error: response.error,
           data: null,
           success: false,
           timestamp: Api.getTimeStamp(),
-        };
+        });
     }
   }
 
