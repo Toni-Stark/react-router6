@@ -4,11 +4,15 @@ import { Home } from "../pages/Home";
 
 export const homeRouters = [
   {
-    name: "/home",
+    name: "/",
     element: <Outlet />,
     children: [
       {
         name: "index",
+        element: <Home />,
+      },
+      {
+        name: "/home",
         element: <Home />,
       },
       {
