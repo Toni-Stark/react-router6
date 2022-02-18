@@ -1,7 +1,7 @@
 {
-  "name": "react-template",
-  "version": "1.0.0",
-  "private": true,
+  "name": "xbb-react-template",
+  "version": "1.0.5",
+  "private": false,
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
@@ -157,7 +157,7 @@
       "react-app"
     ]
   },
-  "homepage": "/research",
+  "homepage": "",
   "eslintConfig": {
     "extends": "react-app"
   }
