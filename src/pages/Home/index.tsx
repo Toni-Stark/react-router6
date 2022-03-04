@@ -1,14 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
 import * as THREE from "three";
-import { TilesRenderer } from "3d-tiles-renderer";
-import "./index.scss";
 interface Props {}
 
 export const Home = (props: Partial<Props>): React.ReactElement => {
-  const navigator = useNavigate();
-
   const camera = new THREE.PerspectiveCamera(
     70,
     window.innerWidth / window.innerHeight,
@@ -38,17 +32,5 @@ export const Home = (props: Partial<Props>): React.ReactElement => {
     renderer.render(scene, camera);
   }
 
-  return (
-    <div className="home-body">
-      {/*<h1>Home</h1>*/}
-      {/*<Button*/}
-      {/*  onClick={() => {*/}
-      {/*    navigator("/store");*/}
-      {/*  }}*/}
-      {/*  type="link"*/}
-      {/*>*/}
-      {/*  跳转*/}
-      {/*</Button>*/}
-    </div>
-  );
+  return <div className="home-body"></div>;
 };

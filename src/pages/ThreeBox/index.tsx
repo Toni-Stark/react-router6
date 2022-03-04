@@ -5,7 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 interface Props {}
 
-export const Store = (props: Partial<Props>) => {
+export const ThreeBox = (props: Partial<Props>) => {
   const sizes = {
     width: window.innerWidth,
     height: window.innerHeight,
@@ -37,34 +37,30 @@ export const Store = (props: Partial<Props>) => {
     init();
   }, []);
   const init = () => {
+    // 创建场景
     const scene = new THREE.Scene();
-    // const geometry = new THREE.BoxGeometry(1, 1, 1, 8, 8, 8);
-    const positionsArray = new Float32Array([0, 0, 0, 0, 1, 0, 1, 0, 0]);
-    const positionAttribute = new THREE.BufferAttribute(positionsArray, 3);
 
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", positionAttribute);
+    camera.position.z = 4;
+    scene.add(camera);
+
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({
       color: 0xff0000,
       wireframe: true,
     });
     const mesh = new THREE.Mesh(geometry, material);
-    const clock = new THREE.Clock();
-
-    scene.add(camera);
     scene.add(mesh);
-    camera.position.z = 4;
     camera.lookAt(mesh.position);
+    const clock = new THREE.Clock();
     canvas = document
       .getElementById("three-box")
       ?.appendChild(renderer.domElement);
-
     const controls = new OrbitControls(camera, canvas);
     // controls.enabled = false;
     controls.enableDamping = true;
 
     const tick = () => {
-      clock.getElapsedTime();
+      const elapsedTime = clock.getElapsedTime();
       controls.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(tick);

@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Home } from "../pages/Home";
+import { UpdateRender } from "../pages/UpdateRender";
+import { Store } from "../pages/Store";
 
 export const homeRouters = [
   {
@@ -9,11 +10,11 @@ export const homeRouters = [
     children: [
       {
         name: "index",
-        element: <Home />,
+        element: <Store />,
       },
       {
-        name: "/home",
-        element: <Home />,
+        name: "/update-render",
+        element: <UpdateRender />,
       },
       {
         name: "*",
