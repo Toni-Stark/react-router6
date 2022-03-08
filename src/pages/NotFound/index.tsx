@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./index.scss";
+import styles from "./index.module.scss";
 interface Props {}
 
 export function NotFound(props: Partial<Props>): React.ReactElement {
@@ -10,5 +10,5 @@ export function NotFound(props: Partial<Props>): React.ReactElement {
     navigator("/home");
   }, []);
 
-  return <div className="not-found"></div>;
+  return <div className={styles.notFound} />;
 }
