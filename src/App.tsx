@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { homeRouters } from "./router/home-routers";
 import { storeRouters } from "./router/store-routers";
 import { ConfigProvider } from "antd";

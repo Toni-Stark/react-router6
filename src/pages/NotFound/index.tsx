@@ -6,9 +6,9 @@ interface Props {}
 export function NotFound(props: Partial<Props>): React.ReactElement {
   const navigator = useNavigate();
 
-  useEffect(() => {
-    navigator("/home");
-  }, []);
+  // useEffect(() => {
+  //   navigator("/home");
+  // }, []);
 
   return <div className="not-found"></div>;
 }

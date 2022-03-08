@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { UpdateRender } from "../pages/UpdateRender";
 import { Store } from "../pages/Store";
+import {NotFound} from "../pages/NotFound";
 
 export const homeRouters = [
   {
