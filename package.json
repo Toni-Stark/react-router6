@@ -1,6 +1,12 @@
 {
   "name": "xbb-react-template",
-  "version": "1.0.7",
+  "main": "build/index.html",
+  "files": ["build", "README.md"],
+  "repository": {
+    "type": "git",
+    "url": "URL_OF_YOUR_REPOSITORY"
+  },
+  "version": "1.0.8",
   "private": false,
   "dependencies": {
     "@babel/core": "7.12.3",
@@ -9,8 +15,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
+
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "antd": "^4.16.13",
@@ -62,10 +67,8 @@
     "postcss-safe-parser": "5.0.2",
     "prettier": "^2.4.1",
     "prompts": "2.4.0",
-    "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
-    "react-dom": "^17.0.2",
     "react-refresh": "^0.8.3",
     "react-router": "^6.1.1",
     "react-router-dom": "6",
@@ -101,7 +104,12 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "jest": {
     "roots": [
       "<rootDir>/src"
