@@ -1,0 +1,16 @@
+.formLabel {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  > .formTitle {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    font-size: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    height: 35px;
+    line-height: 30px;
+    margin-right: 10px;
+  }
+}

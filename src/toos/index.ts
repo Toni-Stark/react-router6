@@ -1,6 +1,6 @@
 export const queryToObj = (url: string): Object => {
   let res: any = {};
-  const search = url.substring(1); //去掉前面的“?”
+  const search = url.substring(1);
   search.split("&").forEach((paramStr) => {
     const arr = paramStr.split("=");
     const val = arr[1];
