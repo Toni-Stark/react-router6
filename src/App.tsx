@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { homeRouters } from "./router/home-routers";
 import { storeRouters } from "./router/store-routers";
 import { ConfigProvider } from "antd";
@@ -23,6 +23,7 @@ export const App = () => {
         );
       }
     };
+    console.log("路由发生了变化", window.location);
     return (
       <Routes>
         {homeRouters?.map((item: any, key: any) => {
@@ -33,7 +34,7 @@ export const App = () => {
         })}
       </Routes>
     );
-  }, [homeRouters, storeRouters]);
+  }, []);
 
   return (
     <ConfigProvider locale={zh_CH}>
