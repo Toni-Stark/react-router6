@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { UpdateRender } from "../pages/UpdateRender";
-import {ColorScreen} from "../pages/ColorScreen";
+import { Sphere } from "../pages/Sphere";
 
 export const homeRouters = [
   {
@@ -10,7 +10,7 @@ export const homeRouters = [
     children: [
       {
         name: "index",
-        element: <ColorScreen />,
+        element: <Sphere />,
       },
       {
         name: "/update-render",
